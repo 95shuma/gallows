@@ -6,7 +6,7 @@
 * java version "13.0.2"
 * javac 13.0.2
 * Sring Boot 2.3.0.RELEASE
-* MySQL Workbench 8.0
+* PostgreSQL 12.3, compiled by Visual C++ build 1914, 64 bit
 * IntelliJ IDEA 2019.3.3 (Ultimate Edition)
 * Apache Maven 3.6.1
 
