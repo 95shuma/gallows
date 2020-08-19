@@ -20,12 +20,13 @@ git clone https://github.com/95shuma/gallows.git
 ```
 
 Открыть с помощью IntelliJ IDEA
-
-в файле application.properties
+* в файле application.properties
 ввести свои данные 
-spring.datasource.url - путь к БД
-spring.datasource.username - имя пользователя
-spring.datasource.password - пароль
+* spring.datasource.url - путь к БД
+* spring.datasource.username - имя пользователя
+* spring.datasource.password - пароль
+
+запустить проект
 
 ## Собрано с помощью
 
