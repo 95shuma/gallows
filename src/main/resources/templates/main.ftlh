@@ -16,7 +16,7 @@
         </#if>
         <p><a class="btn btn-danger btn-block w-100" href="/logout" role="button">Quit</a></p>
     </div>
-
+    <#if admin??>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -71,5 +71,5 @@
             $('#myInput').trigger('focus')
         })
     </script>
-
+    </#if>
 </@main.renderWith>
