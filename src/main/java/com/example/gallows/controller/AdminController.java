@@ -2,10 +2,13 @@ package com.example.gallows.controller;
 
 import com.example.gallows.dto.UserDTO;
 import com.example.gallows.dto.WordDTO;
+import com.example.gallows.service.GameService;
 import com.example.gallows.service.UserService;
 import com.example.gallows.service.WordService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
     private WordService wordService;
     private UserService userService;
+    private GameService gameService;
+
+    @GetMapping("/all-stat")
+    public String getAllStat(Model model) {
+        model.addAttribute("games",gameService.getAllStat());
+        return "allStat";
+    }
 
     @PostMapping("/add-word")
     public String addWord(WordDTO wordDTO) {
