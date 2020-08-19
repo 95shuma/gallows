@@ -3,7 +3,7 @@
 <@main.renderWith scripts=["https://code.jquery.com/jquery-3.3.1.slim.min.js","https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js","https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"] styles=["https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"]>
 
     <div class="mx-auto mt-3 w-50">
-        <h4 class="text-center">Description: ${game.word.description}</h4>
+        <h4 class="text-center">Description: ${game.wordDTO.description}</h4>
         <br>
         <#list word_let as let>
             <div class="border border-info" style="width: 50px; height: 50px; margin: 10px; display: inline-block">
@@ -11,7 +11,7 @@
             </div>
         </#list>
         <br>
-        <h4>Attempts: ${game.end_attempts}</h4>
+        <h4>Attempts: ${game.attempts}</h4>
         <br>
         <form action="/user/check-letter" method="post">
             <#if _csrf??>
