@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class GameDTO {
+    private Integer id;
     private UserDTO userDTO;
     private WordDTO wordDTO;
     private Integer attempts;
@@ -17,6 +18,7 @@ public class GameDTO {
 
     public static GameDTO from(Game game){
         return GameDTO.builder()
+                .id(game.getId())
                 .userDTO(UserDTO.from(game.getUser()))
                 .wordDTO(WordDTO.from(game.getWord()))
                 .attempts(game.getAttempts())
