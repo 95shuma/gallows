@@ -1,0 +1,5 @@
+CREATE TABLE words (
+    id SERIAL PRIMARY KEY,
+    word VARCHAR(20) NOT NULL,
+    description VARCHAR(255) NOT NULL
+);
