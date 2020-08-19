@@ -10,7 +10,7 @@ import lombok.*;
 public class UserDTO {
     private String name;
     private String password;
-    private String role;
+    private String role = "ROLE_USER";
 
     public static UserDTO from (User user) {
         return UserDTO.builder()
