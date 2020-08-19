@@ -11,7 +11,7 @@ public class UserDTO {
     private String name;
     private String password;
 
-    public UserDTO from (User user) {
+    public static UserDTO from (User user) {
         return UserDTO.builder()
                 .name(user.getName())
                 .password(user.getPassword())

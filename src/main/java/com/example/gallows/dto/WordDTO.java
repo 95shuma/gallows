@@ -11,7 +11,7 @@ public class WordDTO {
     private String word;
     private String description;
 
-    public WordDTO from (Word word) {
+    public static WordDTO from (Word word) {
         return WordDTO.builder()
                 .word(word.getWord())
                 .description(word.getDescription())
