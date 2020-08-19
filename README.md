@@ -12,12 +12,20 @@
 
 ### Инструкция по разворчиванию окружения
 
+создать базу данных в Postgres
+с именем gallows_db
+
 ```
 git clone https://github.com/95shuma/gallows.git
 ```
 
 Открыть с помощью IntelliJ IDEA
 
+в файле application.properties
+ввести свои данные 
+spring.datasource.url - путь к БД
+spring.datasource.username - имя пользователя
+spring.datasource.password - пароль
 
 ## Собрано с помощью
 
