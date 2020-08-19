@@ -15,7 +15,7 @@ public class GameDTO {
     private String used_letters;
     private String user_word;
 
-    public GameDTO from(Game game){
+    public static GameDTO from(Game game){
         return GameDTO.builder()
                 .userDTO(UserDTO.from(game.getUser()))
                 .wordDTO(WordDTO.from(game.getWord()))

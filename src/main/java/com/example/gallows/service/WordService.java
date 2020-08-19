@@ -6,6 +6,9 @@ import com.example.gallows.repository.WordRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Random;
+
 @Service
 @AllArgsConstructor
 public class WordService {
@@ -16,5 +19,11 @@ public class WordService {
                 .word(wordDTO.getWord())
                 .description(wordDTO.getDescription())
                 .build());
+    }
+
+    public WordDTO getRandomWord(){
+        Random random = new Random();
+        List<Word> words = wordRepo.findAll();
+        return WordDTO.from(words.get(random.nextInt(words.size())));
     }
 }
