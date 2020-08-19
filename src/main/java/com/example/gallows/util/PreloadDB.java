@@ -1,5 +1,6 @@
 package com.example.gallows.util;
 
+import com.example.gallows.model.Game;
 import com.example.gallows.model.User;
 import com.example.gallows.model.Word;
 import com.example.gallows.repository.GameRepo;
@@ -25,6 +26,7 @@ public class PreloadDB {
             ur.deleteAll();
             wr.deleteAll();
             //------------Тестовые данные--------------
+            //------------Пользователи------------------
             User user = new User();
             user.setName("admin");
             user.setPassword(encoder.encode("admin"));
@@ -39,6 +41,7 @@ public class PreloadDB {
                     .password(encoder.encode("qwer"))
                     .build();
             ur.save(user2);
+            //------------Слова------------------
             Word word = Word.builder()
                     .word("Волк")
                     .description("Лесное животное")
@@ -54,7 +57,26 @@ public class PreloadDB {
                     .description("Фрукт")
                     .build();
             wr.save(word2);
-            System.out.println("http://localhost:7777/");
+            //------------Несколько игр для просмотра статистики------------------
+            Game game = Game.builder()
+                    .user(ur.findUserByName("user").get())
+                    .word(wr.findWordByWordAndDescription("Волк","Лесное животное").get())
+                    .attempts(2)
+                    .points(5)
+                    .used_letters("")
+                    .user_word("Волк")
+                    .build();
+            gr.save(game);
+            Game game1 = Game.builder()
+                    .user(ur.findUserByName("qwer").get())
+                    .word(wr.findWordByWordAndDescription("Огурец","Овощ").get())
+                    .attempts(4)
+                    .points(4)
+                    .used_letters("")
+                    .user_word("Огурец")
+                    .build();
+            gr.save(game1);
+            System.out.println("Кликните для запуска проекта - http://localhost:7777/");
         };
     }
 }

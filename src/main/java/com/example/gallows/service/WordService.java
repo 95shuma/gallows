@@ -14,6 +14,7 @@ import java.util.Random;
 public class WordService {
     private WordRepo wordRepo;
 
+    //------------Сохранение слова----------
     public void saveWord(WordDTO wordDTO){
         wordRepo.save(Word.builder()
                 .word(wordDTO.getWord())
@@ -21,6 +22,7 @@ public class WordService {
                 .build());
     }
 
+    //-----------Вывести случайное слово----------
     public WordDTO getRandomWord(){
         Random random = new Random();
         List<Word> words = wordRepo.findAll();

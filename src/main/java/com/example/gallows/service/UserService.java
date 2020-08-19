@@ -13,10 +13,12 @@ public class UserService {
     private UserRepo userRepo;
     private final PasswordEncoder encoder;
 
+    //------------Найти пользователя по имени--------------
     public UserDTO getUserByName(String name){
         return UserDTO.from(userRepo.findUserByName(name).get());
     }
 
+    //------------Сохранить пользователя--------------
     public void saveUser(UserDTO userDTO){
         userRepo.save(User.builder()
                 .name(userDTO.getName())

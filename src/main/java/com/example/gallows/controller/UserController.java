@@ -25,6 +25,7 @@ public class UserController {
     private WordService wordService;
     private GameService gameService;
 
+    //-----------Отображение стартовой страницы игры------------
     @GetMapping("/game")
     public String play(Model model, Principal principal) {
         UserDTO userDTO = userService.getUserByName(principal.getName());
@@ -36,21 +37,25 @@ public class UserController {
         return "game";
     }
 
+    //-----------Отображение страницы игры------------
     @GetMapping("/game/continue")
     public String continuePlay(){
         return "game";
     }
 
+    //-----------Отображение победной страницы------------
     @GetMapping("/win")
     public String getWinPage(){
         return "winPage";
     }
 
+    //-----------Отображение проигрышной страницы------------
     @GetMapping("/lose")
     public String getLosePage(){
         return "losePage";
     }
 
+    //-----------Отображение страницы статистики пользователя------------
     @GetMapping("/stat")
     public String getStat(Model model, Principal principal){
         UserDTO userDTO = userService.getUserByName(principal.getName());
@@ -58,13 +63,16 @@ public class UserController {
         return "userStat";
     }
 
+    //-----------Обработка полученных ответов-------------------
     @PostMapping("/check-letter")
     public String checkLetter(RedirectAttributes attributes,
                               @RequestParam("game_id") Integer game_id,
                               @RequestParam("letter") String letter) {
         GameDTO gameDTO = gameService.findGameById(game_id);
+        //-----------------Обработка случая если пользователь отгадал букву-----------
         if (gameDTO.getWordDTO().getWord().toUpperCase().indexOf(letter)>=0){
             GameDTO gameDTO1 = gameService.userFindLetter(letter, game_id);
+            //-----------------Обработка случая если пользователь отгадал слово-----------
             if(gameDTO1.getWordDTO().getWord().toUpperCase().equals(gameDTO1.getUser_word())){
                 attributes.addFlashAttribute("word",gameDTO1.getUser_word());
                 attributes.addFlashAttribute("points",gameDTO1.getPoints());
@@ -74,14 +82,18 @@ public class UserController {
             attributes.addFlashAttribute("letters",gameDTO1.getUsed_letters().split(""));
             attributes.addFlashAttribute("word_let",gameDTO1.getUser_word().split(""));
             return "redirect:/user/game/continue";
-        } else {
+        }
+        //-----------------Обработка случая если пользователь не отгадал букву-----------
+        else {
             if (gameDTO.getAttempts()>0){
                 GameDTO gameDTO1 = gameService.userNotFindLetter(letter,game_id);
                 attributes.addFlashAttribute("game",gameDTO1);
                 attributes.addFlashAttribute("letters",gameDTO1.getUsed_letters().split(""));
                 attributes.addFlashAttribute("word_let",gameDTO1.getUser_word().split(""));
                 return "redirect:/user/game/continue";
-            } else {
+            }
+            //-----------------Обработка случая если пользователь потратил все попытки-----------
+            else {
                 attributes.addFlashAttribute("word",gameDTO.getWordDTO().getWord());
                 return "redirect:/user/lose";
             }

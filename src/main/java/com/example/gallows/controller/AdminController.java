@@ -21,18 +21,21 @@ public class AdminController {
     private UserService userService;
     private GameService gameService;
 
+    //-------Отображение общей статистики----------
     @GetMapping("/all-stat")
     public String getAllStat(Model model) {
         model.addAttribute("games",gameService.getAllStat());
         return "allStat";
     }
 
+    //-------Добавление слова----------
     @PostMapping("/add-word")
     public String addWord(WordDTO wordDTO) {
         wordService.saveWord(wordDTO);
         return "redirect:/";
     }
 
+    //-------Добавление пользователя----------
     @PostMapping("/add-user")
     public String addUser(UserDTO userDTO) {
         userService.saveUser(userDTO);

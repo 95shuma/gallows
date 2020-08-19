@@ -28,6 +28,7 @@ public class GameService {
     private UserRepo userRepo;
     private WordRepo wordRepo;
 
+    //----------Сохранение игры---------------
     public GameDTO saveGame(UserDTO userDTO, WordDTO wordDTO){
         String userWord = "";
         for(int i=0; i<wordDTO.getWord().length();i++){
@@ -44,10 +45,12 @@ public class GameService {
         return GameDTO.from(game);
     }
 
+    //----------Поиск игры по ID---------------
     public GameDTO findGameById(Integer id){
         return GameDTO.from(gameRepo.findById(id).get());
     }
 
+    //-----------Обработка случая если пользователь отгадал букву---------------
     public GameDTO userFindLetter(String letter, Integer gameId){
         Game game = gameRepo.findById(gameId).get();
 
@@ -75,6 +78,7 @@ public class GameService {
         return GameDTO.from(game);
     }
 
+    //-----------Обработка случая если пользователь не отгадал букву---------------
     public GameDTO userNotFindLetter(String letter, Integer gameId){
         Game game = gameRepo.findById(gameId).get();
 
@@ -96,11 +100,13 @@ public class GameService {
         return GameDTO.from(game);
     }
 
+    //----------Поиск игры по ID пользователя---------------
     public List<GameDTO> findGamesByUserId(Integer id){
         List<Game> games = gameRepo.findGamesByUserId(id);
         return games.stream().map(game -> GameDTO.from(game)).collect(Collectors.toList());
     }
 
+    //----------Просмотр общей статистики---------------
     public List<UserPoint> getAllStat(){
         List<Game> games = gameRepo.findAll();
         Map<User, Integer> userPoints = games.stream()

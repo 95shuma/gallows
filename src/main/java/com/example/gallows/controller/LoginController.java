@@ -14,6 +14,7 @@ import java.security.Principal;
 public class LoginController {
     private UserService userService;
 
+    //--------Отображение главной страницы---------
     @GetMapping("/")
     public String getMainPage(Model model, Principal principal) {
         UserDTO userDTO = userService.getUserByName(principal.getName());
