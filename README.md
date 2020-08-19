@@ -13,7 +13,7 @@
 ### Инструкция по разворчиванию окружения
 
 создать базу данных в Postgres
-с именем gallows_db
+с именем "gallows_db"
 
 ```
 git clone https://github.com/95shuma/gallows.git
