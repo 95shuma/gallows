@@ -28,6 +28,10 @@ git clone https://github.com/95shuma/gallows.git
 
 запустить проект
 
+Тестовые данные
+* Админ (login: "admin"; password: "admin")
+* User (login: "user"; password: "user")
+
 ## Собрано с помощью
 
 * [Maven](https://maven.apache.org/) - Dependency Management
