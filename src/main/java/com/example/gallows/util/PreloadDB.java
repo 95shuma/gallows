@@ -76,7 +76,6 @@ public class PreloadDB {
                     .user_word("Огурец")
                     .build();
             gr.save(game1);
-            System.out.println("Кликните для запуска проекта - http://localhost:7777/");
         };
     }
 }
